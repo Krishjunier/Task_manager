@@ -1,0 +1,9 @@
+#latest version of the module
+Flask==3.0.0
+Flask-SQLAlchemy
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+SQLAlchemy
+Werkzeug == 3.0.1
