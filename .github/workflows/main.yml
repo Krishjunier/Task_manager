@@ -13,6 +13,9 @@ jobs:
         name: Checkout
         uses: actions/checkout@v4
       -
+        name: Set up environment variables
+        run: echo "REPO_NAME_LOWER=$(echo ${{ github.event.repository.name }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+      -
         name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -27,4 +30,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name | lower }}:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPO_NAME_LOWER }}:latest
